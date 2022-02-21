@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.neppplus.librarypractice_20220221">
-
-<!--    인터넷은 기본적인권한 => 태그만 추가하면 사용 가능 -->
-    <uses-permission android:name="android.permission.INTERNET"/>
-
-<!--    위험한 권한도 마찬가지로 태그는 추가해야 함-->
-    <uses-permission android:name="android.permission.CALL_PHONE"/>
-
+    <!-- 인터넷은 기본적인권한 => 태그만 추가하면 사용 가능 -->
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- 위험한 권한도 마찬가지로 태그는 추가해야 함 -->
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:allowBackup="true"
@@ -17,17 +13,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LibraryPractice_20220221">
         <activity
-            android:name=".ViewPhotoActivity"
+            android:name=".SplashActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".ViewPhotoActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
         </activity>
     </application>
 
