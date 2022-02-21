@@ -23,24 +23,25 @@ class MainActivity : AppCompatActivity() {
         btnCall.setOnClickListener {
 
 //            권한 승인 여부에 따른, 행동방안을 작성해서 => pl 변수에 담아두자.
-            val pl = object : PermissionListener {
+            val permissionListener = object : PermissionListener {
                 override fun onPermissionGranted() {
 //                    승인이 OK 일때 할 행동
                     val myUri = Uri.parse("tel:01033337777")
-                    val myIntent = Intent( Intent.ACTION_CALL,  myUri )
-                    startActivity( myIntent )
+                    val myIntent = Intent(Intent.ACTION_CALL, myUri)
+                    startActivity(myIntent)
                 }
 
                 override fun onPermissionDenied(deniedPermissions: MutableList<String>?) {
 //                    거절 되었을 때 할 행동.
-                    Toast.makeText(this@MainActivity, "권한이 거절되어, 통화가 불가능합니다", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@MainActivity, "권한이 거절되어, 통화가 불가능합니다", Toast.LENGTH_SHORT)
+                        .show()
                 }
 
             }
 
 //            실제로 권한을 물어보자.
             TedPermission.create()
-                .setPermissionListener(pl)
+                .setPermissionListener(permissionListener)
                 .setPermissions(Manifest.permission.CALL_PHONE)
                 .check()
         }
